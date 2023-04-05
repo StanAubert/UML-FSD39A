@@ -16,22 +16,17 @@ class Waiter {
         if ($key !== false) {
             unset($this->tables[$key]);
         }
-        $table->removeWaiter($this);
+
         return $this;
     }
 
-    public function getTables(): array {
-        return $this->tables;
-    }
 }
 
 class Table {
-
     private array $waiters = [];
 
     public function addWaiter(Waiter $waiter) : Table {
         $this->waiters[] = $waiter;
-        $waiter->addTable($this);
         return $this;
     }
 
@@ -44,4 +39,7 @@ class Table {
         return $this;
     }
 
+    public function getWaiters() : array {
+        return $this->waiters;
+    }
 }
