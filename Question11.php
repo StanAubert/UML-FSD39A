@@ -48,7 +48,7 @@ public function __construct(private string $name) {
 public function addvehicle(Vehicle $vehicle): void {
     if (!in_array($vehicle, $this->vehicles, true)) {
         $this->vehicles[] = $vehicle;
-        $vehicle->setTechnician($this);
+        $vehicle->addTechnician($this);
     }
 }
 
